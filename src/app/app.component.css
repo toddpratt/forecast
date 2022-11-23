@@ -1,0 +1,42 @@
+
+h1 {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  margin: auto;
+  width: calc(150px * 7);
+}
+
+.day-container {
+  width: 150px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: lavenderblush;
+  border: lavender solid medium;
+  padding: 8px;
+}
+
+.icon img {
+  border: lavender solid medium;
+}
+
+.day {
+  margin-bottom: 15px;
+}
+
+.day-name {
+  margin-bottom: 6px;
+}
+
+.temperature, .icon, .day-name {
+  text-align: center;
+}
+
+.alerts-container {
+  width: 400px;
+  margin: auto;
+}
