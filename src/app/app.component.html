@@ -1,38 +1,43 @@
+<ng-container *ngIf="ready$ | async">
 
-<h1 *ngIf="geo$ | async as geoResponse">
-  {{geoResponse.geo.city}}, {{geoResponse.geo.regionName}}, {{geoResponse.geo.countryName}}
-</h1>
+  <div class="icon-bar">
+    <div matTooltip="Refresh"><button mat-fab (click)="refresh()"><mat-icon>refresh</mat-icon></button></div>
+    <div matTooltip="Change Location"><button mat-fab (click)="chooseLocation()"><mat-icon>more_horiz</mat-icon></button></div>
+  </div>
 
-<div class="alerts-container" *ngIf="alert$ | async as alert">
-  <p class="alert" *ngFor="let feature of alert.features">
-    {{feature.properties.headline}}
-  </p>
-</div>
+  <h1>
+    <span>{{coordinates.display_name}}</span>
+  </h1>
 
-<div class="container">
-  <div class="day-container">
-    <div class="today day" *ngIf="current[0] as period">
-      <div class="day-name">{{period.name}}</div>
-      <div class="day-icon icon"><img src="{{period.icon}}"></div>
-      <div class="day-temperature temperature">{{period.temperature}}</div>
-    </div>
-    <div class="tonight night" *ngIf="current[1] as period">
-      <div class="day-name">{{period.name}}</div>
-      <div class="day-icon icon"><img src="{{period.icon}}"></div>
-      <div class="day-temperature temperature">{{period.temperature}}</div>
+  <div class="daily-forecast-container">
+    <div class="day-container"
+         *ngFor="let day of dailyForecast.days"
+         matTooltip="{{day.weatherCode | weatherDescription}}"
+         (click)="setSelectedDay(day)">
+      <div class="daily-date">{{day.date | date:'E'}}</div>
+      <!--    <div class="icon"><mat-icon color="primary">{{day.weatherCode | weatherIcon}}</mat-icon></div>-->
+      <div class="icon">
+        <img src="{{day | weatherIcon}}"
+             alt="{{day.weatherCode | weatherDescription}}" width="48px" height="48px">
+      </div>
+      <!--    <div class="icon">{{day.weatherCode | weatherDescription}}</div>-->
+      <!--    <div class="icon">{{day.weatherCode}}</div>-->
+      <div class="max">{{day.tempMax}}</div>
+      <div class="temp-min">{{day.tempMin}}</div>
     </div>
   </div>
-  <div class="day-container" *ngFor="let period of periods">
-    <div class="today day">
-      <div class="day-name">{{period[0].name}}</div>
-      <div class="day-icon icon"><img src="{{period[0].icon}}"></div>
-      <div class="day-temperature temperature">{{period[0].temperature}}</div>
-    </div>
-    <div class="tonight night">
-      <div class="day-name">{{period[1].name}}</div>
-      <div class="day-icon icon"><img src="{{period[1].icon}}"></div>
-      <div class="day-temperature temperature">{{period[1].temperature}}</div>
+
+  <div class="hourly-title">{{hourlyForecast.hours[0].hour | date:'EEEE, LLLL d, Y'}} {{timezone}}</div>
+  <div class="hourly-forecast-container">
+    <div class="hour-container" *ngFor="let hour of hourlyForecast.hours">
+      <div class="hourly-hour">{{hour.hour | date:'h:mma'}}</div>
+      <div class="hourly-icon">
+        <img src="{{hour | weatherIcon:hour.hour:forecastDay.sunrise:forecastDay.sunset}}"
+             alt="{{hour.weatherCode | weatherDescription}}" width="48px" height="48px">
+      </div>
+      <div class="hourly-temp">{{hour.temp}}</div>
+      <!--    <div class="hourly-description">{{hour.weathercode | weatherDescription}}</div>-->
     </div>
   </div>
-</div>
 
+</ng-container>

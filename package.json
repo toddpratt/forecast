@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "surge": "surge dist/forecast/",
+    "set_cname": "echo wew.surge.sh > dist\\forecast\\CNAME"
   },
   "private": true,
   "dependencies": {

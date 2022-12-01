@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Change Location</h1>
+
+<div>
+  <mat-form-field appearance="outline">
+    <mat-label>Query</mat-label>
+    <input matInput type="text" [(ngModel)]="query" (keyup.enter)="search()">
+    <button matSuffix mat-icon-button (click)="search()"><mat-icon>search</mat-icon></button>
+  </mat-form-field>
+</div>
+
+<div>
+  <mat-form-field appearance="outline">
+    <mat-label>Result</mat-label>
+    <mat-select [(ngModel)]="result" [disabled]="!(locations$ | async)" required>
+      <mat-option *ngFor="let location of locations$ | async" [value]="location">{{location.display_name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="result" [disabled]="!result">Ok</button>
+</div>

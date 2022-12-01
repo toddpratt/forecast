@@ -1,42 +1,73 @@
 
 h1 {
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   text-align: center;
 }
 
-.container {
+.daily-forecast-container {
+  border-radius: 5px;
+  background-color: #25273c;
+  border: #777a92 solid medium;
   display: flex;
-  margin: auto;
-  width: calc(150px * 7);
+  margin: 0 auto 1em auto;
+  width: 36em;
 }
 
 .day-container {
-  width: 150px;
   margin: 5px;
+  padding: 6px;
+  width: 5em;
+}
+
+.day-container > div {
+  text-align: center;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.day-container:hover {
+  scale: 110%;
+}
+
+.hourly-title {
+  margin: auto;
+  width: 36em;
+}
+
+.choose-location-link {
+  cursor: pointer;
+  font-size: 10pt;
+  text-decoration: underline;
+}
+
+.hourly-forecast-container {
+  display: flex;
+  /*flex-wrap: wrap;*/
+  justify-content: space-around;
   border-radius: 5px;
-  background-color: lavenderblush;
-  border: lavender solid medium;
-  padding: 8px;
+  background-color: #25273c;
+  border: #777a92 solid medium;
+  width: 36em;
+  margin: auto;
 }
 
-.icon img {
-  border: lavender solid medium;
+.hour-container {
+  margin: 5px;
+  padding: 6px;
+  width: 5em;
 }
 
-.day {
-  margin-bottom: 15px;
-}
-
-.day-name {
-  margin-bottom: 6px;
-}
-
-.temperature, .icon, .day-name {
+.hour-container > div {
   text-align: center;
 }
 
-.alerts-container {
-  width: 400px;
-  margin: auto;
+.icon-bar {
+  margin: 1em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.icon-bar > * {
+  margin-left: 1em;
 }
