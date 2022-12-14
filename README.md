@@ -1,27 +1,21 @@
 # Forecast
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.9.
+A page that uses various APIs to display a weather forecast for your city.
 
-## Development server
+## APIs
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Weather API - [Open Meteo](https://open-meteo.com/en)
 
-## Code scaffolding
+Provides the weather.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Geo IP API - [ipapi](https://ipapi.co/)
 
-## Build
+Finds the city for your IP address.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Timezone API - [timezoneapi](https://timezonedb.com/)
 
-## Running unit tests
+Finds your time zone based on your latitude and longitude.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Location API - [OpenStreeMap](https://www.openstreetmap.org)
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Finds the latitude and longitude given a city.
