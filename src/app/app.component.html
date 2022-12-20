@@ -11,8 +11,9 @@
 
   <div class="daily-forecast-container">
     <div class="day-container"
-         *ngFor="let day of dailyForecast.days"
+         *ngFor="let day of dailyForecast.days; let index = index"
          matTooltip="{{day.weatherCode | weatherDescription}}"
+         [ngClass]="(index === 5 || index === 6) ? 'drop-if-mobile' : ''"
          (click)="setSelectedDay(day)">
       <div class="daily-date">{{day.date | date:'E'}}</div>
       <!--    <div class="icon"><mat-icon color="primary">{{day.weatherCode | weatherIcon}}</mat-icon></div>-->
@@ -29,7 +30,9 @@
 
   <div class="hourly-title">{{hourlyForecast.hours[0].hour | date:'EEEE, LLLL d, Y'}} {{timezone}}</div>
   <div class="hourly-forecast-container">
-    <div class="hour-container" *ngFor="let hour of hourlyForecast.hours">
+    <div class="hour-container"
+         *ngFor="let hour of hourlyForecast.hours; let index = index"
+         [ngClass]="(index === 5 || index === 6) ? 'drop-if-mobile' : ''">
       <div class="hourly-hour">{{hour.hour | date:'h:mma'}}</div>
       <div class="hourly-icon">
         <img src="{{hour | weatherIcon:hour.hour:forecastDay.sunrise:forecastDay.sunset}}"

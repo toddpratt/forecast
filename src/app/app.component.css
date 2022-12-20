@@ -71,3 +71,16 @@ h1 {
 .icon-bar > * {
   margin-left: 1em;
 }
+
+@media screen and (max-width: 1000px) {
+  .drop-if-mobile {
+    display: none;
+  }
+  .daily-forecast-container, .hourly-forecast-container, .hourly-title {
+    width: 25em;
+  }
+  .day-container, .hour-container {
+    width: 3.5em;
+  }
+}
+
